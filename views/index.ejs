@@ -1,0 +1,145 @@
+<%- include('./partials/header') %> <% if(error.length>0){ %>
+
+<% } %>
+<!-- <div class="w-full h-screen flex px-20 bg-zinc-900 text-white">
+  <div class="w-1/2 flex items-center justify-center h-screen">
+    <div class="w-full px-32">
+      <h3 class="text-4xl">
+        welcome to <span class="text-blue-500 font-semibold">Website</span>
+      </h3>
+      <h4 class="text-2xl mb-5">create your account</h4>
+      <form autocomplete="off" action="/users/register" method="post">
+        <input
+          class="bg-zinc-900 block w-full px-3 py-2 border-[1px] rounded-md mb-3 border-zinc-200"
+          type="text"
+          placeholder="Full Name"
+          name="fullname"
+        />
+        <input
+          class="bg-zinc-900 block w-full px-3 py-2 border-[1px] rounded-md mb-3 border-zinc-200"
+          type="email"
+          placeholder="Email"
+          name="email"
+        />
+        <input
+          class="bg-zinc-900 block w-full px-3 py-2 border-[1px] rounded-md mb-3 border-zinc-200"
+          type="password"
+          placeholder="Password"
+          name="password"
+        />
+        <input
+          class="px-5 rounded-md py-3 mt-2 bg-blue-500 text-white"
+          type="submit"
+          value="Create My Account"
+        />
+      </form>
+    </div>
+  </div>
+  <div class="w-1/2 flex items-center justify-center h-screen">
+    <div class="w-full px-32">
+      <h4 class="text-2xl capitalize mb-5">login your account</h4>
+      <form autocomplete="off" action="/users/login" method="post">
+        <input
+          class="block bg-zinc-900 w-full px-3 py-2 border-[1px] rounded-md mb-3 border-zinc-200"
+          type="email"
+          placeholder="Email"
+          name="email"
+        />
+        <input
+          class="block bg-zinc-900 w-full px-3 py-2 border-[1px] rounded-md mb-3 border-zinc-200"
+          type="password"
+          placeholder="Password"
+          name="password"
+        />
+        <input
+          class="px-5 block rounded-md py-3 mt-2 bg-blue-500 text-white"
+          type="submit"
+          value="Login"
+        />
+      </form>
+    </div>
+  </div>
+</div> -->
+ <div class="flex items-center justify-center min-h-screen">
+    <div class="w-full max-w-md">
+      <div class="bg-zinc-800 p-8 rounded-lg shadow-lg">
+        <!-- Toggle Tabs -->
+        <div class="mb-4 flex justify-around">
+          <button id="loginTab" class="py-2 px-4 border-b-2 border-blue-500 focus:outline-none">Login</button>
+          <button id="signupTab" class="py-2 px-4 border-b-2 border-none focus:outline-none">Sign Up</button>
+        </div>
+        <% if (error != "") { %>
+            <div id="error-message" class="bg-red-500 text-white p-2 rounded mb-4 text-center">
+              <%= error %>
+            </div>
+          <% } else { %>
+            <div id="error-message" class="hidden bg-red-500 text-white p-2 rounded mb-4 text-center">
+              <%= error %>
+            </div>
+          <% } %>          
+        <!-- Login Form -->
+        <form id="loginForm" action="/users/login" method="post">
+          <div class="mb-4">
+            <label for="loginEmail" class="block text-sm font-medium">Email</label>
+            <input
+              type="email"
+              id="loginEmail"
+              placeholder="Enter your email"
+              class="mt-1 block w-full p-2 bg-zinc-700 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              name="email"
+            />
+          </div>
+          <div class="mb-4">
+            <label for="loginPassword" class="block text-sm font-medium">Password</label>
+            <input
+              type="password"
+              id="loginPassword"
+              placeholder="Enter your password"
+              class="mt-1 block w-full p-2 bg-zinc-700 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              name="password"
+            />
+          </div>
+          <button type="submit" class="w-full py-2 bg-blue-600 rounded hover:bg-blue-700 transition-colors">
+            Login
+          </button>
+        </form>
+        <!-- Signup Form -->
+        <form id="signupForm" class="hidden" action="/users/register" method="post">
+          <div class="mb-4">
+            <label for="signupUsername" class="block text-sm font-medium">Username</label>
+            <input
+              type="text"
+              id="signupUsername"
+              placeholder="Choose a username"
+              class="mt-1 block w-full p-2 bg-zinc-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+              name="fullname"
+            />
+          </div>
+          <div class="mb-4">
+            <label for="signupEmail" class="block text-sm font-medium">Email</label>
+            <input
+              type="email"
+              id="signupEmail"
+              placeholder="Enter your email"
+              class="mt-1 block w-full p-2 bg-zinc-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+              name="email"
+            />
+          </div>
+          <div class="mb-4">
+            <label for="signupPassword" class="block text-sm font-medium">Password</label>
+            <input
+              type="password"
+              id="signupPassword"
+              placeholder="Choose a password"
+              class="mt-1 block w-full p-2 bg-zinc-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+              name="password"
+            />
+          </div>
+          <button type="submit" class="w-full py-2 bg-green-600 rounded hover:bg-green-700 transition-colors">
+            Sign Up
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+<%- include('./partials/footer') %>
