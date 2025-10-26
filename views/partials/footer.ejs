@@ -4,13 +4,13 @@
 <!-- Footer Section -->
 <% var loggedin = typeof loggedin !== 'undefined' ? loggedin : true; %> 
 <% if (loggedin) { %>
-<footer class="bg-blue-500 text-white py-6 mt-10">
+<footer class="bg-[#7c3aed] text-white py-6 mt-10">
   <div class="max-w-7xl mx-auto px-4">
     <div class="flex flex-col md:flex-row justify-between items-center">
       <!-- Left Section: Text or Links -->
       <div class="flex flex-col items-center md:items-start">
-        <h3 class="text-xl font-bold">Scatch</h3>
-        <p class="mt-2">Your one-stop shop for all Bags!</p>
+        <h1 class="text-[22px] font-bold"><i class="fa-regular fa-calendar" style="color:#E53935;"></i> BMI 5‑Year Planner</h1>
+        <p class="mt-2">Your one-stop shop for all your tasks</p>
       </div>
 
       <!-- Middle Section: Social Icons -->
@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="text-center mt-6 border-t border-gray-700 pt-4">
-      <p>&copy; 2025 Scatch. All Rights Reserved.</p>
+      <p>&copy;<%= new Date().getFullYear() %> BMI Planner. All rights reserved.</p>
     </div>
   </div>
 </footer>

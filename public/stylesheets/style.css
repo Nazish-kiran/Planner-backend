@@ -1,0 +1,74 @@
+  .gradient-bg {
+            background: linear-gradient(135deg, #1e1b2e 0%, #1a1625 100%);
+        }
+        
+        .hero-gradient {
+            background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.15) 0%, rgba(0,0,0,0) 70%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: rgba(139, 92, 246, 0.1);
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-card {
+            background: linear-gradient(145deg, #27272a 0%, #1f1f23 100%);
+            border: 1px solid #3f3f46;
+        }
+        
+        .pricing-highlight {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-highlight::before {
+            content: "POPULAR";
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--brand);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.25rem 1.5rem;
+            transform: rotate(45deg) translate(1.5rem, -1rem);
+            width: 120px;
+            text-align: center;
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .accordion-open {
+            max-height: 500px !important;
+        }
+        
+        .accordion-icon.accordion-open  {
+            transform: rotate(180deg);
+        }
+        
+        .stats-counter {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #8b5cf6, #c4b5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }

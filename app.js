@@ -31,7 +31,7 @@ app.use("/users", usersRouter);
 app.use('/',indexRouter)
 
 
-const PORT = 3000;
+const PORT = 3001;
 
 app.listen(PORT, () => {
   console.log(`App working on port ${PORT}`);

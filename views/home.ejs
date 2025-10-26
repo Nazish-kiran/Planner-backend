@@ -1,35 +1,518 @@
 <%- include('./partials/header') %>
 
-<div class="flex items-center justify-center min-h-screen bg-zinc-900 text-white">
-  <div class="w-full max-w-2xl p-8 bg-zinc-800 rounded-lg shadow-lg">
-    <h1 class="text-3xl font-bold mb-4">Welcome, </h1>
-    <p class="text-lg text-zinc-300 mb-6">
-      You’re logged in with <span class="font-semibold text-blue-400"></span>.
-    </p>
-
-    <div class="grid gap-4 md:grid-cols-2">
-      <!-- Card 1 -->
-      <div class="bg-zinc-700 rounded-lg p-4 shadow hover:shadow-lg transition">
-        <h2 class="text-xl font-semibold mb-2">Your Profile</h2>
-        <p class="text-zinc-300">Manage your account settings and details.</p>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="bg-zinc-700 rounded-lg p-4 shadow hover:shadow-lg transition">
-        <h2 class="text-xl font-semibold mb-2">Dashboard</h2>
-        <p class="text-zinc-300">Access your main features and tools here.</p>
+<!-- Hero Section -->
+<section class="gradient-bg relative overflow-hidden">
+  <div class="hero-gradient absolute inset-0 z-0"></div>
+  <div
+    class="container mx-auto px-6 py-24 flex flex-col items-center justify-center text-center relative z-10"
+  >
+    <div class="max-w-4xl">
+      <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
+        Master Your <span class="text-brand">5-Year Plan</span>
+      </h1>
+      <p
+        class="text-xl md:text-2xl text-zinc-300 max-w-3xl mb-10 leading-relaxed"
+      >
+        Transform your long-term vision into actionable steps. Stay consistent,
+        track your goals, and build your future with the BMI Planner's
+        intelligent progress tracking system.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a
+          href="/home"
+          class="px-10 py-4 rounded-xl bg-brand hover:bg-violet-700 transition-all font-semibold text-lg shadow-lg hover:shadow-xl flex items-center"
+        >
+          Start Your Journey <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+        <a
+          href="#features"
+          class="px-10 py-4 rounded-xl bg-zinc-800 hover:bg-zinc-700 transition-all font-semibold text-lg border border-zinc-700"
+        >
+          Learn More
+        </a>
       </div>
     </div>
 
-    <form action="/users/logout" method="post" class="mt-6">
-      <button 
-        type="submit" 
-        class="w-full py-2 bg-red-600 rounded hover:bg-red-700 transition-colors"
-      >
-        Logout
-      </button>
-    </form>
+    <!-- Stats Section -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20 max-w-4xl">
+      <div class="text-center">
+        <div class="stats-counter" id="users-counter">0</div>
+        <p class="text-zinc-400">Active Users</p>
+      </div>
+      <div class="text-center">
+        <div class="stats-counter" id="goals-counter">0</div>
+        <p class="text-zinc-400">Goals Achieved</p>
+      </div>
+      <div class="text-center">
+        <div class="stats-counter" id="plans-counter">0</div>
+        <p class="text-zinc-400">5-Year Plans</p>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
+<!-- Features Section -->
+<section id="features" class="py-20 px-6">
+  <div class="container mx-auto max-w-6xl">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold mb-4">
+        Powerful Features for Your Success
+      </h2>
+      <p class="text-xl text-zinc-400 max-w-3xl mx-auto">
+        Our comprehensive toolkit helps you break down ambitious goals into
+        manageable steps with precision tracking.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Feature 1 -->
+      <div class="bg-zinc-800 rounded-xl p-6 card-hover border border-zinc-700">
+        <div class="feature-icon">
+          <i class="fas fa-bullseye text-2xl text-brand"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Goal Breakdown</h3>
+        <p class="text-zinc-400">
+          Deconstruct your 5-year vision into quarterly milestones, monthly
+          targets, and weekly actions for maximum clarity.
+        </p>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="bg-zinc-800 rounded-xl p-6 card-hover border border-zinc-700">
+        <div class="feature-icon">
+          <i class="fas fa-chart-line text-2xl text-brand"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Progress Analytics</h3>
+        <p class="text-zinc-400">
+          Visualize your advancement with detailed charts and insights to stay
+          motivated and adjust your strategy.
+        </p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="bg-zinc-800 rounded-xl p-6 card-hover border border-zinc-700">
+        <div class="feature-icon">
+          <i class="fas fa-bell text-2xl text-brand"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Smart Reminders</h3>
+        <p class="text-zinc-400">
+          Never miss a deadline with customizable notifications that keep you on
+          track without overwhelming you.
+        </p>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="bg-zinc-800 rounded-xl p-6 card-hover border border-zinc-700">
+        <div class="feature-icon">
+          <i class="fas fa-sync-alt text-2xl text-brand"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Habit Tracking</h3>
+        <p class="text-zinc-400">
+          Build consistency with daily habit tracking that connects your
+          routines to long-term success.
+        </p>
+      </div>
+
+      <!-- Feature 5 -->
+      <div class="bg-zinc-800 rounded-xl p-6 card-hover border border-zinc-700">
+        <div class="feature-icon">
+          <i class="fas fa-users text-2xl text-brand"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Collaboration</h3>
+        <p class="text-zinc-400">
+          Share plans with mentors or team members for accountability and
+          collective goal achievement.
+        </p>
+      </div>
+
+      <!-- Feature 6 -->
+      <div class="bg-zinc-800 rounded-xl p-6 card-hover border border-zinc-700">
+        <div class="feature-icon">
+          <i class="fas fa-mobile-alt text-2xl text-brand"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Mobile Access</h3>
+        <p class="text-zinc-400">
+          Access your plan anywhere with our responsive web app and dedicated
+          mobile applications.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Author Section -->
+<section class="py-16 px-6 bg-zinc-800">
+<div class="container mx-auto max-w-4xl">
+    <h2 class="text-4xl font-bold mb-12 text-center">About Our Team</h2>
+
+    <div class="flex flex-col md:flex-row gap-8 items-center mb-12">
+      <div class="md:w-1/3 flex justify-center">
+        <div
+          class="w-48 h-48 rounded-full bg-gradient-to-br from-brand to-violet-900 flex items-center justify-center"
+        >
+          <i class="fas fa-users text-6xl text-white"></i>
+        </div>
+      </div>
+      <div class="md:w-2/3">
+        <h3 class="text-2xl font-bold mb-4">
+          Student Innovators: Passionate About Productivity
+        </h3>
+        <p class="text-zinc-300 mb-4">
+          We're a team of three dedicated students <span class="text-[#7c3aed]">Sufiyan Rajput</span>, <span class="text-[#7c3aed]">Nazish Kiran</span>, and <span class="text-[#7c3aed]">Nevvera Naeem</span> who combined our skills in development, design, and user experience to create the BMI 5-Year Planner.
+        </p>
+        <p class="text-zinc-300">
+          As students ourselves, we understand the challenges of balancing academic goals, personal growth, and long-term planning. We created this tool to help ourselves and others navigate these challenges more effectively.
+        </p>
+      </div>
+    </div>
+
+    <div id="accordion" class="space-y-4">
+      <!-- Item 1 -->
+      <div class="border border-zinc-700 rounded-xl overflow-hidden">
+        <button
+          class="w-full flex justify-between items-center p-6 bg-zinc-900 hover:bg-zinc-800 transition-all text-left"
+          onclick="toggleAccordion(1)"
+        >
+          <span class="font-semibold text-lg"
+            >Our Inspiration & Mission</span
+          >
+          <i
+            id="icon-1"
+            class="fas fa-chevron-down transition-transform accordion-icon"
+          ></i>
+        </button>
+        <div id="content-1" class="accordion-content">
+          <div class="p-6 text-zinc-300 bg-zinc-900 border-t border-zinc-800">
+            <p class="mb-4">
+              The <span class="text-[#7c3aed]">BMI Planner</span> was born from our own struggles with long-term planning as students. We noticed that while we had big dreams and academic goals, we lacked a systematic approach to turn these aspirations into actionable steps.
+            </p>
+            <p>
+              Our mission is to help students and young professionals bridge the gap between ambition and execution. We believe that with the right tools and systematic approach, anyone can make consistent progress toward their most important life goals.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="border border-zinc-700 rounded-xl overflow-hidden">
+        <button
+          class="w-full flex justify-between items-center p-6 bg-zinc-900 hover:bg-zinc-800 transition-all text-left"
+          onclick="toggleAccordion(2)"
+        >
+          <span class="font-semibold text-lg"
+            >What Makes Our Approach Unique</span
+          >
+          <i
+            id="icon-2"
+            class="fas fa-chevron-down transition-transform accordion-icon"
+          ></i>
+        </button>
+        <div id="content-2" class="accordion-content">
+          <div class="p-6 text-zinc-300 bg-zinc-900 border-t border-zinc-800">
+            <p class="mb-4">
+              Unlike complex productivity tools designed for corporate environments, we built the <span class="text-[#7c3aed]">BMI Planner</span> specifically with students and young professionals in mind. We focused on simplicity, visual progress tracking, and flexibility to adapt to changing goals.
+            </p>
+            <p>
+              Our fresh perspective as students allows us to understand the unique challenges of balancing multiple priorities—academics, personal development, career planning, and social life—all while maintaining motivation over the long term.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="border border-zinc-700 rounded-xl overflow-hidden">
+        <button
+          class="w-full flex justify-between items-center p-6 bg-zinc-900 hover:bg-zinc-800 transition-all text-left"
+          onclick="toggleAccordion(3)"
+        >
+          <span class="font-semibold text-lg"
+            >Our Development Philosophy</span
+          >
+          <i
+            id="icon-3"
+            class="fas fa-chevron-down transition-transform accordion-icon"
+          ></i>
+        </button>
+        <div id="content-3" class="accordion-content">
+          <div class="p-6 text-zinc-300 bg-zinc-900 border-t border-zinc-800">
+            <p class="mb-4">
+              As student developers, we believe in creating tools that are both powerful and accessible. We've incorporated research-backed planning methodologies while ensuring the interface remains intuitive and user-friendly.
+            </p>
+            <p>
+              We're committed to continuous improvement based on user feedback. As we continue our academic journeys, we plan to enhance the <span class="text-[#7c3aed]">BMI Planner</span> with features that address the evolving needs of students and young professionals navigating their career paths.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-20 px-6">
+  <div class="container mx-auto max-w-6xl">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold mb-4">Success Stories</h2>
+      <p class="text-xl text-zinc-400 max-w-3xl mx-auto">
+        Discover how individuals and teams are transforming their futures with
+        the BMI Planner
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Testimonial 1 -->
+      <div class="testimonial-card rounded-xl p-6">
+        <div class="flex items-center mb-4">
+          <div
+            class="w-12 h-12 rounded-full bg-brand flex items-center justify-center mr-4"
+          >
+            <span class="font-bold">SM</span>
+          </div>
+          <div>
+            <h4 class="font-bold">Sarah Johnson</h4>
+            <p class="text-zinc-400 text-sm">Entrepreneur</p>
+          </div>
+        </div>
+        <p class="text-zinc-300 italic">
+          "The BMI Planner helped me systemize my business expansion. In 18
+          months, I've achieved what I thought would take 5 years. The progress
+          tracking kept me motivated through challenges."
+        </p>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="testimonial-card rounded-xl p-6">
+        <div class="flex items-center mb-4">
+          <div
+            class="w-12 h-12 rounded-full bg-brand flex items-center justify-center mr-4"
+          >
+            <span class="font-bold">MR</span>
+          </div>
+          <div>
+            <h4 class="font-bold">Michael Rodriguez</h4>
+            <p class="text-zinc-400 text-sm">Software Engineer</p>
+          </div>
+        </div>
+        <p class="text-zinc-300 italic">
+          "As someone who struggled with long-term projects, the BMI Planner's
+          breakdown system was a game-changer. I went from scattered efforts to
+          methodical progress in my career transition."
+        </p>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="testimonial-card rounded-xl p-6">
+        <div class="flex items-center mb-4">
+          <div
+            class="w-12 h-12 rounded-full bg-brand flex items-center justify-center mr-4"
+          >
+            <span class="font-bold">TJ</span>
+          </div>
+          <div>
+            <h4 class="font-bold">Taylor Kim</h4>
+            <p class="text-zinc-400 text-sm">Marketing Director</p>
+          </div>
+        </div>
+        <p class="text-zinc-300 italic">
+          "Our team uses the BMI Planner for strategic initiatives. The
+          collaboration features have improved alignment and accountability,
+          leading to 40% faster project completion."
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="bg-zinc-800 py-20 px-6">
+  <div class="container mx-auto max-w-6xl">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold mb-4">Choose Your Success Plan</h2>
+      <p class="text-xl text-zinc-400 max-w-3xl mx-auto">
+        Select the plan that matches your ambition level. All plans include core
+        planning features with varying levels of advanced capabilities.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <!-- Free -->
+      <div
+        class="bg-zinc-900 border border-zinc-700 rounded-xl p-8 shadow hover:shadow-xl transition-all flex flex-col card-hover"
+      >
+        <div class="mb-6">
+          <span
+            class="inline-block px-3 py-1 bg-zinc-800 text-zinc-300 rounded-full text-sm font-semibold"
+            >Starter</span
+          >
+        </div>
+        <h3 class="text-2xl font-bold mb-2">Free</h3>
+        <p class="text-zinc-400 mb-6">
+          Perfect for individuals starting their planning journey
+        </p>
+        <p class="text-4xl font-bold mb-6">
+          $0<span class="text-lg text-zinc-400 font-normal">/forever</span>
+        </p>
+
+        <ul class="mb-8 space-y-3 flex-grow">
+          <li class="flex items-start">
+            <i class="fas fa-check text-ok mr-2 mt-1"></i>
+            <span>5-Year Goal Setting</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check text-ok mr-2 mt-1"></i>
+            <span>Basic Progress Tracking</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check text-ok mr-2 mt-1"></i>
+            <span>3 Active Plans</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check text-ok mr-2 mt-1"></i>
+            <span>Email Support</span>
+          </li>
+        </ul>
+
+        <a
+          href="/signup"
+          class="py-3 px-4 bg-zinc-800 hover:bg-zinc-700 rounded-lg font-semibold text-center transition-all"
+        >
+          Get Started Free
+        </a>
+      </div>
+
+      <!-- Pro -->
+      <div
+        class="bg-zinc-900 border-2 border-brand rounded-xl p-8 shadow-lg hover:shadow-xl transition-all flex flex-col card-hover pricing-highlight"
+      >
+        <div class="mb-6">
+          <span
+            class="inline-block px-3 py-1 bg-brand text-white rounded-full text-sm font-semibold"
+            >Most Popular</span
+          >
+        </div>
+        <h3 class="text-2xl font-bold mb-2">Pro</h3>
+        <p class="text-zinc-400 mb-6">
+          Ideal for serious planners committed to achievement
+        </p>
+        <p class="text-4xl font-bold mb-6">
+          $9<span class="text-lg text-zinc-400 font-normal">/month</span>
+        </p>
+
+        <ul class="mb-8 space-y-3 flex-grow">
+          <li class="flex items-start">
+            <i class="fas fa-check text-ok mr-2 mt-1"></i>
+            <span>Everything in Free</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check text-ok mr-2 mt-1"></i>
+            <span>Advanced Analytics</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check text-ok mr-2 mt-1"></i>
+            <span>Unlimited Plans</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check text-ok mr-2 mt-1"></i>
+            <span>Habit Integration</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check text-ok mr-2 mt-1"></i>
+            <span>Priority Support</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check text-ok mr-2 mt-1"></i>
+            <span>Team Collaboration</span>
+          </li>
+        </ul>
+
+        <a
+          href="/signup"
+          class="py-3 px-4 bg-brand hover:bg-violet-700 rounded-lg font-semibold text-center transition-all"
+        >
+          Start Pro Trial
+        </a>
+      </div>
+
+      <!-- Enterprise -->
+      <div
+        class="bg-zinc-900 border border-zinc-700 rounded-xl p-8 shadow hover:shadow-xl transition-all flex flex-col card-hover"
+      >
+        <div class="mb-6">
+          <span
+            class="inline-block px-3 py-1 bg-zinc-800 text-zinc-300 rounded-full text-sm font-semibold"
+            >Organization</span
+          >
+        </div>
+        <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
+        <p class="text-zinc-400 mb-6">
+          For teams and organizations scaling strategic execution
+        </p>
+        <p class="text-4xl font-bold mb-6">
+          $29<span class="text-lg text-zinc-400 font-normal">/month</span>
+        </p>
+
+        <ul class="mb-8 space-y-3 flex-grow">
+          <li class="flex items-start">
+            <i class="fas fa-check text-ok mr-2 mt-1"></i>
+            <span>Everything in Pro</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check text-ok mr-2 mt-1"></i>
+            <span>Advanced Admin Controls</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check text-ok mr-2 mt-1"></i>
+            <span>Custom Reporting</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check text-ok mr-2 mt-1"></i>
+            <span>API Access</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check text-ok mr-2 mt-1"></i>
+            <span>Dedicated Account Manager</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check text-ok mr-2 mt-1"></i>
+            <span>SSO Integration</span>
+          </li>
+        </ul>
+
+        <a
+          href="/signup"
+          class="py-3 px-4 bg-ok hover:bg-green-600 rounded-lg font-semibold text-center transition-all"
+        >
+          Contact Sales
+        </a>
+      </div>
+    </div>
+
+    <div class="text-center mt-12 text-zinc-400">
+      <p>
+        All plans include a 14-day free trial of Pro features. No credit card
+        required.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-20 px-6 gradient-bg">
+  <div class="container mx-auto max-w-4xl text-center">
+    <h2 class="text-4xl font-bold mb-6">Ready to Build Your Future?</h2>
+    <p class="text-xl text-zinc-300 mb-10 max-w-2xl mx-auto">
+      Join thousands of successful planners who are turning their 5-year visions
+      into reality, one week at a time.
+    </p>
+    <a
+      href="/signup"
+      class="inline-block px-12 py-4 rounded-xl bg-brand hover:bg-violet-700 transition-all font-semibold text-lg shadow-lg hover:shadow-xl"
+    >
+      Start Your 5-Year Plan Today
+    </a>
+    <p class="text-zinc-400 mt-6">
+      No credit card required • Free forever plan available
+    </p>
+  </div>
+</section>
 <%- include('./partials/footer') %>

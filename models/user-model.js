@@ -14,6 +14,13 @@ const userSchema = new mongoose.Schema({
   password: String,
   contact: Number,
   picture: String,
+  
+});
+
+userSchema.virtual("notes", {
+  ref: "Note",
+  localField: "_id",
+  foreignField: "user",
 });
 
 export default mongoose.model("User", userSchema);
