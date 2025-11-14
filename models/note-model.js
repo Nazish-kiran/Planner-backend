@@ -1,20 +1,30 @@
 import mongoose from "mongoose";
-import { type } from "os";
 
-const notesSchema = mongoose.Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
+const noteSchema = new mongoose.Schema(
+  {
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    date: {
+      type: String,
+      required: true,
+      match: /^\d{4}-\d{2}-\d{2}$/,
+    },
+    content: {
+      type: String,
+      default: "",
+    },
   },
-  content: {
-    type: String,
-    trim: true,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-});
+  {
+    timestamps: { createdAt: "createdAt", updatedAt: "updatedAt" }, // automatically adds updatedAt
+  }
+);
 
-export default mongoose.model("Notes", notesSchema);
+
+noteSchema.index({ userId: 1, date: 1 }, { unique: true });
+
+const Note = mongoose.model("Note", noteSchema);
+
+export default Note;

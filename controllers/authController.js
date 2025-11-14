@@ -1,83 +1,106 @@
 import userModel from "../models/user-model.js";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import cookieParser from "cookie-parser";
 import generateToken from "../utils/generateToken.js";
 
 const registerUser = async (req, res) => {
   try {
-    let { fullname, email, password } = req.body;
+    const { fullname, email, password } = req.body;
 
     if (!fullname || !email || !password) {
-      req.flash("error", "All fields are required.");
-      return res.redirect("/"); // Redirect if data is missing
+      return res.status(400).json({ success: false, message: "All fields are required." });
     }
 
-    // Check if the user already exists
-    let existingUser = await userModel.findOne({ email });
+    // Check if user already exists
+    const existingUser = await userModel.findOne({ email });
     if (existingUser) {
-      req.flash(
-        "error",
-        "An account with this email already exists. Please log in instead."
-      );
-      return res.redirect("/"); // Redirect if user already exists
+      return res.status(400).json({
+        success: false,
+        message: "An account with this email already exists. Please log in instead.",
+      });
     }
 
-    // Hash the password using bcrypt
+    // Hash password
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    // Create the user
-    let user = await userModel.create({
+    // Create user
+    const user = await userModel.create({
       fullname,
       email,
       password: hashedPassword,
     });
 
-    // Generate a token for the user
-    let token = generateToken(user);
+    // Generate JWT token
+    const token = generateToken(user);
 
-    // Set the token as a cookie and redirect to the shop page
-    res.cookie("token", token);
-    res.redirect("/home");
+    // Set token cookie (optional)
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+    });
+
+    // Respond with JSON (Next.js will handle redirect)
+    res.status(201).json({
+      success: true,
+      message: "User registered successfully.",
+      token,
+      user: {
+        _id: user._id,
+        fullname: user.fullname,
+        email: user.email,
+      },
+    });
   } catch (err) {
-    console.error("Error during registration:", err.message); // Log error
-    req.flash("error", err.message);
-    res.redirect("/"); // Redirect with an error message
+    console.error("Registration Error:", err.message);
+    res.status(500).json({ success: false, message: "Server error." });
   }
 };
 
 const loginUser = async (req, res) => {
   try {
     let { email, password } = req.body;
-    email = email.trim().toLowerCase(); // normalize
+    email = email.trim().toLowerCase();
 
-    let user = await userModel.findOne({ email });
+    const user = await userModel.findOne({ email });
     if (!user) {
-      req.flash("error", "Incorrect Email or Password");
-      return res.redirect("/");
+      return res.status(400).json({ success: false, message: "Invalid email or password." });
     }
 
-    // Use async/await instead of callback
     const isMatch = await bcrypt.compare(password, user.password);
-
     if (!isMatch) {
-      req.flash("error", "Incorrect Email or Password");
-      return res.redirect("/");
+      return res.status(400).json({ success: false, message: "Invalid email or password." });
     }
 
-    let token = generateToken(user);
-    res.cookie("token", token);
-    res.redirect("/home");
+    // Generate JWT token
+    const token = generateToken(user);
+
+    // Set cookie
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+    });
+
+    res.status(200).json({
+      success: true,
+      message: "Login successful.",
+      token,
+      user: {
+        _id: user._id,
+        fullname: user.fullname,
+        email: user.email,
+      },
+    });
   } catch (err) {
-    console.error("Login error:", err.message);
-    req.flash("error", "Something went wrong during login.");
-    res.redirect("/");
+    console.error("Login Error:", err.message);
+    res.status(500).json({ success: false, message: "Server error." });
   }
 };
 
 const logoutUser = (req, res) => {
-  res.clearCookie("token")
-  res.redirect("/");
+  res.clearCookie("token");
+  res.status(200).json({ success: true, message: "Logged out successfully." });
 };
+
 export { registerUser, loginUser, logoutUser };
